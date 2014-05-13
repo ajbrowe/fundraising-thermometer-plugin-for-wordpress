@@ -66,7 +66,7 @@ if ( $_REQUEST['ourprogresssubmit'] && isset( $_REQUEST['ourprogressmax'] ) ) {
 
 function thisismyurl_ourprogress_action( $links, $file ) {
 	// adds the link to the settings page in the plugin list page
-	if ( $file == plugin_basename( dirname( __FILE__ ).'/ourprogress.php' ) )
+	if ( $file == plugin_basename( dirname( __FILE__ ).'/fundraising-thermometer-plugin-for-wordpress.php' ) )
 	$links[] = "<a href='edit.php?page=ourprogressmanage'>" . __( 'Settings', 'Fundraising Thermometer Plugin for WordPress' ) . "</a>";
 	return $links;
 }
@@ -112,7 +112,7 @@ function thisismyurl_ourprogress_manage_page( ) {
 			<th scope="row" valign="top"><label for="slug">Theme</label></th>
 			<td><select name="ourprogresstheme" id="ourprogresstheme">
             	<?php
-					$path = "../wp-content/plugins/fundraising-thermometer-plugin-for-wordpress/images/";
+					$path = plugin_dir_path( __FILE__ ) . "images/";
 					$myDirectory = opendir( $path );
 
 			// get each entry
@@ -213,7 +213,7 @@ function show_ourprogress_graphic( ) {
 
 function thisismyurl_add_header_code( ) {
 	if( get_option( "ourprogresstheme" ) ) 		{$theme = get_option( "ourprogresstheme" );} else {$theme = "default";}
-	echo '<link type="text/css" rel="stylesheet" href="'. get_bloginfo( 'wpurl' ).'/wp-content/plugins/fundraising-thermometer-plugin-for-wordpress/images/'.$theme.'/style.css" />' . "\n";
+	echo '<link type="text/css" rel="stylesheet" href="'. plugins_url() .'/fundraising-thermometer-plugin-for-wordpress/images/'.$theme.'/style.css" />' . "\n";
 }
 
 function thisismyurl_roundnum ( $num, $nearest )
